@@ -1,26 +1,175 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fa;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --surface-muted: #f1f3f5;
+  --border: #e2e5e9;
+  --muted: #687282;
+  --accent: #e11d48;
+  --accent-dark: #be123c;
+}
+
+.dark {
+  --background: #0b0d10;
+  --foreground: #f4f4f5;
+  --surface: #12151a;
+  --surface-muted: #181c22;
+  --border: #272b32;
+  --muted: #9aa1ae;
+  --accent: #fb7185;
+  --accent-dark: #f43f5e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  outline-color: var(--accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8bec8;
+  border-radius: 999px;
+}
+
+.wiki-editor h1,
+.wiki-content h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.wiki-editor h2,
+.wiki-content h2 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.wiki-editor h3,
+.wiki-content h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.wiki-editor ul,
+.wiki-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.wiki-editor ol,
+.wiki-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+.wiki-editor blockquote,
+.wiki-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--muted);
+}
+
+.wiki-editor pre,
+.wiki-content pre {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background: var(--surface-muted);
+  padding: 1rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.82rem;
+}
+
+.wiki-editor table,
+.wiki-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wiki-content code[class*="language-"],
+.wiki-editor code[class*="language-"] {
+  font-family: var(--font-geist-mono), monospace;
+  color: var(--foreground);
+}
+
+.wiki-content .token.comment,
+.wiki-content .token.prolog,
+.wiki-content .token.doctype,
+.wiki-content .token.cdata {
+  color: #7d8b9a;
+}
+
+.wiki-content .token.keyword,
+.wiki-content .token.selector,
+.wiki-content .token.tag {
+  color: #fb7185;
+}
+
+.wiki-content .token.string,
+.wiki-content .token.attr-value,
+.wiki-content .token.char {
+  color: #34d399;
+}
+
+.wiki-content .token.function,
+.wiki-content .token.class-name {
+  color: #60a5fa;
+}
+
+.wiki-content .token.number,
+.wiki-content .token.boolean,
+.wiki-content .token.constant {
+  color: #fbbf24;
+}
+
+.wiki-editor th,
+.wiki-editor td,
+.wiki-content th,
+.wiki-content td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+}
+
+.wiki-editor img,
+.wiki-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
 }
